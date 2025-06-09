@@ -7,9 +7,13 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.casejbs.databinding.FragmentSecondBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondFragment extends Fragment {
 
@@ -26,13 +30,17 @@ public class SecondFragment extends Fragment {
 
     }
 
+    RecyclerView rv;
+    List<Veiculo> veiculos = new ArrayList<>();
+    private Database db = new Database(getContext());
+
+
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        binding.buttonSecond.setOnClickListener(v ->
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment)
-        );
+        AdapterVeiculo adapterVeiculo = new AdapterVeiculo(veiculos);
+        binding.rv.setAdapter(adapterVeiculo);
+        binding.rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        db.listarVeiculosNoEstacionamento();
     }
 
     @Override
