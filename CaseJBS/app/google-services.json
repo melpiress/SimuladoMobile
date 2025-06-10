@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "990951048219",
+    "project_id": "simuladomobile-13822",
+    "storage_bucket": "simuladomobile-13822.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990951048219:android:a62eef9557dcb4d0b864be",
+        "android_client_info": {
+          "package_name": "com.mobile.casejbs"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAtMxK-2sHwnisPjWc-sHoqmcxrraLHPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

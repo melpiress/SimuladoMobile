@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services") version "4.4.0" apply false
 }
 
 android {
@@ -35,7 +36,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.google.firebase:firebase-firestore:25.1.4")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
