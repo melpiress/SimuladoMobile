@@ -1,5 +1,6 @@
 package com.mobile.casejbs;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class AdapterVeiculo extends RecyclerView.Adapter<AdapterVeiculo.ViewHolder> {
+    private Database db;
 
     private List<Veiculo> veiculos;
 
@@ -33,6 +35,7 @@ public class AdapterVeiculo extends RecyclerView.Adapter<AdapterVeiculo.ViewHold
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                db.registrarSaidaVeiculo(Integer.parseInt(String.valueOf(holder.usuario)));
                 return true;
             }
         });

@@ -49,4 +49,8 @@ public class SecondFragment extends Fragment {
         binding = null;
     }
 
+    public void adicionarVeiculo(Veiculo veiculo) {
+        db.adicionarCarro(veiculo);
+    }
+
 }
