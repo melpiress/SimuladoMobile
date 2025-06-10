@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/LoginFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -23,6 +23,24 @@
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.mobile.casejbs.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/CadastroFragment"
+        android:name="com.mobile.casejbs.CadastroFragment"
+        android:label="fragment_cadastro"
+        tools:layout="@layout/fragment_cadastro" >
+        <action
+            android:id="@+id/action_cadastroFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>
