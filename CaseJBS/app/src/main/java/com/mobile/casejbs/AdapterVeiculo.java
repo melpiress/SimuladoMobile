@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class AdapterVeiculo extends RecyclerView.Adapter<AdapterVeiculo.ViewHolder> {
@@ -35,7 +36,7 @@ public class AdapterVeiculo extends RecyclerView.Adapter<AdapterVeiculo.ViewHold
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                db.registrarSaidaVeiculo(Integer.parseInt(String.valueOf(holder.usuario)));
+                db.registrarSaidaVeiculo(String.valueOf(holder.usuario), LocalDateTime.now());
                 return true;
             }
         });

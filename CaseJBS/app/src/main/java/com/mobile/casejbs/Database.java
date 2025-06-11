@@ -4,6 +4,7 @@ package com.mobile.casejbs;
 
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -51,7 +52,7 @@ public class Database {
                         Toast.makeText(context, "Erro ao atualizar veículo", Toast.LENGTH_SHORT).show());
     }
 
-    public void registrarSaidaVeiculo(String id, Date dataHoraSaida) {
+    public void registrarSaidaVeiculo(String id, LocalDateTime dataHoraSaida) {
         veiculosRef.document(id)
                 .update("dataHoraSaida", dataHoraSaida, "ativo", false)
                 .addOnSuccessListener(aVoid ->

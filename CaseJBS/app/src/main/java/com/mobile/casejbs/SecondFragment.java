@@ -50,7 +50,7 @@ public class SecondFragment extends Fragment {
     }
 
     public void adicionarVeiculo(Veiculo veiculo) {
-        db.adicionarCarro(veiculo);
+        db.adicionarVeiculo(veiculo);
     }
 
 }
