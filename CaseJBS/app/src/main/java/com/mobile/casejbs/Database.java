@@ -21,7 +21,7 @@ public class Database {
     private CollectionReference usuariosRef;
     private Context context;
 
-    public Database(Context context) {
+    public Database(Context context) {  
         this.context = context;
         db = FirebaseFirestore.getInstance();
         veiculosRef = db.collection("veiculos");
@@ -43,41 +43,6 @@ public class Database {
                 .addOnFailureListener(e ->
                         Toast.makeText(context, "Erro ao adicionar veículo", Toast.LENGTH_SHORT).show());
     }
-
-    public void buscarVeiculoPorPlaca(String placa) {
-        veiculosRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                for (QueryDocumentSnapshot doc : task.getResult()) {
-                    Veiculo v = doc.toObject(Veiculo.class);
-                    if (v.getPlaca().equals(placa) && v.isAtivo()) {
-                        v.setId(doc.getId());
-                        Toast.makeText(context, "Veículo encontrado: " + v.getPlaca(), Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                }
-                Toast.makeText(context, "Veículo não encontrado", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(context, "Erro na busca", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void buscarVeiculoPorId(String id) {
-        veiculosRef.document(id).get().addOnCompleteListener(task -> {
-            if (task.isSuccessful() && task.getResult().exists()) {
-                Veiculo v = task.getResult().toObject(Veiculo.class);
-                if (v != null) {
-                    v.setId(task.getResult().getId());
-                    Toast.makeText(context, "Veículo encontrado: " + v.getPlaca(), Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Erro ao converter documento", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(context, "Veículo não encontrado", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     public void atualizarVeiculo(String id, Veiculo veiculo) {
         veiculosRef.document(id).set(veiculo)
                 .addOnSuccessListener(aVoid ->
@@ -112,33 +77,6 @@ public class Database {
             }
         });
     }
-
-    public void listarHistoricoVeiculosPorUsuario(String usuario) {
-        veiculosRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                List<Veiculo> veiculos = new ArrayList<>();
-                for (QueryDocumentSnapshot doc : task.getResult()) {
-                    Veiculo v = doc.toObject(Veiculo.class);
-                    if (v.getUsuario().equals(usuario)) {
-                        v.setId(doc.getId());
-                        veiculos.add(v);
-                    }
-                }
-                Toast.makeText(context, "Histórico carregado: " + veiculos.size() + " registros", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(context, "Erro ao carregar histórico", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void excluirVeiculo(String id) {
-        veiculosRef.document(id).delete()
-                .addOnSuccessListener(aVoid ->
-                        Toast.makeText(context, "Veículo excluído com sucesso!", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e ->
-                        Toast.makeText(context, "Erro ao excluir veículo", Toast.LENGTH_SHORT).show());
-    }
-
     public void verificarPlacaJaAtiva(String placa) {
         veiculosRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -157,23 +95,6 @@ public class Database {
                 }
             } else {
                 Toast.makeText(context, "Erro ao verificar placa", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    public void contarVeiculosNoEstacionamento() {
-        veiculosRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                int count = 0;
-                for (QueryDocumentSnapshot doc : task.getResult()) {
-                    Veiculo v = doc.toObject(Veiculo.class);
-                    if (v.isAtivo()) {
-                        count++;
-                    }
-                }
-                Toast.makeText(context, "Total de veículos: " + count, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(context, "Erro ao contar veículos", Toast.LENGTH_SHORT).show();
             }
         });
     }
