@@ -10,6 +10,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.mobile.casejbs.LoginFragment;
+
 public class SplashScreenEntrada extends AppCompatActivity {
 
     @Override
@@ -22,7 +24,7 @@ public class SplashScreenEntrada extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        new Handler().postDelayed(this::abrirTela, 5000);
+        new Handler().postDelayed(this::abrirTela, 3000);
     }
 
     private void abrirTela(){
