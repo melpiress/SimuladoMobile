@@ -91,10 +91,6 @@ public class Usuario {
         return "funcionario".equals(tipoUsuario);
     }
 
-    public boolean isCliente() {
-        return "cliente".equals(tipoUsuario);
-    }
-
 
     //    ToString...
     @Override
