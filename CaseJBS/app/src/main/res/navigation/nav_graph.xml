@@ -43,4 +43,9 @@
             android:id="@+id/action_cadastroFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/AdminFragment"
+        android:name="com.mobile.casejbs.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" />
 </navigation>

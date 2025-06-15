@@ -76,6 +76,19 @@ public class LoginFragment extends Fragment {
         password = view.findViewById(R.id.password);
         direcionar = view.findViewById(R.id.direcionar);
 
+        if (usuarioLogado != null) {
+            Fragment fragment = new FirstFragment();
+
+            Bundle usuario = new Bundle();
+            usuario.putString("tipoUsuario", usuarioLogado.getTipoUsuario());
+            fragment.setArguments(usuario);
+
+            getActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .commit();
+        }
+
 
         direcionar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,4 +102,26 @@ public class LoginFragment extends Fragment {
 
         return view;
     }
+
+//        public void verificarLogin(String email, String senha, Context context, LoginCallback callback) {
+//            FirebaseFirestore db = FirebaseFirestore.getInstance();
+//
+//            db.collection("usuarios")
+//                    .whereEqualTo("email", email)
+//                    .whereEqualTo("senha", senha)
+//                    .get()
+//                    .addOnCompleteListener(task -> {
+//                        if (task.isSuccessful()) {
+//                            if (!task.getResult().isEmpty()) {
+//                                DocumentSnapshot doc = task.getResult().getDocuments().get(0);
+//                                Usuario usuario = doc.toObject(Usuario.class);
+//                                callback.onLoginSuccess(usuario);
+//                            } else {
+//                                callback.onLoginFailure("Email ou senha inválidos");
+//                            }
+//                        } else {
+//                            callback.onLoginFailure("Erro ao conectar ao banco");
+//                        }
+//                    });
+//        }
 }
