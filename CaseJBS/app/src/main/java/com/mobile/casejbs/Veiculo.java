@@ -6,16 +6,15 @@ import java.util.Date;
 public class Veiculo {
     private String id;
     private String placa;
-    private LocalDateTime dataHoraEntrada;
-    private LocalDateTime dataHoraSaida;
-
-    private String usuario;
+    private Date dataHoraEntrada;
+    private Date dataHoraSaida;
+    private Usuario usuario;
     private boolean ativo;
 
     public Veiculo() {
     }
 
-    public Veiculo(String id, String placa, LocalDateTime dataHoraEntrada, LocalDateTime dataHoraSaida, String usuario, boolean ativo) {
+    public Veiculo(String id, String placa, Date dataHoraEntrada, Date dataHoraSaida, Usuario usuario, boolean ativo) {
         this.id = id;
         this.placa = placa;
         this.dataHoraEntrada = dataHoraEntrada;
@@ -25,7 +24,7 @@ public class Veiculo {
     }
 
     // Construtor para entrada (sem saída)
-    public Veiculo(String placa, LocalDateTime dataHoraEntrada, String usuario) {
+    public Veiculo(String placa, Date dataHoraEntrada, Usuario usuario) {
         this.placa = placa;
         this.dataHoraEntrada = dataHoraEntrada;
         this.usuario = usuario;
@@ -42,15 +41,15 @@ public class Veiculo {
         return placa;
     }
 
-    public LocalDateTime getDataHoraEntrada() {
+    public Date getDataHoraEntrada() {
         return dataHoraEntrada;
     }
 
-    public LocalDateTime getDataHoraSaida() {
+    public Date getDataHoraSaida() {
         return dataHoraSaida;
     }
 
-    public String getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
@@ -67,15 +66,15 @@ public class Veiculo {
         this.placa = placa;
     }
 
-    public void setDataHoraEntrada(LocalDateTime dataHoraEntrada) {
+    public void setDataHoraEntrada(Date dataHoraEntrada) {
         this.dataHoraEntrada = dataHoraEntrada;
     }
 
-    public void setDataHoraSaida(LocalDateTime dataHoraSaida) {
+    public void setDataHoraSaida(Date dataHoraSaida) {
         this.dataHoraSaida = dataHoraSaida;
     }
 
-    public void setUsuario(String usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

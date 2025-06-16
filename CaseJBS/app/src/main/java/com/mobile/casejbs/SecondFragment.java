@@ -32,25 +32,21 @@ public class SecondFragment extends Fragment {
 
     RecyclerView rv;
     List<Veiculo> veiculos = new ArrayList<>();
-    private Database db = new Database(getContext());
-
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Database db = new Database(getContext());
         AdapterVeiculo adapterVeiculo = new AdapterVeiculo(veiculos);
         binding.rv.setAdapter(adapterVeiculo);
-        binding.rv.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        db.listarVeiculosNoEstacionamento();
+        binding.rv.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        db.listarVeiculosNoEstacionamento(veiculos, adapterVeiculo);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    public void adicionarVeiculo(Veiculo veiculo) {
-        db.adicionarVeiculo(veiculo);
     }
 
 }

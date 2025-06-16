@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.time.LocalDateTime;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +33,7 @@ public class CadastroFragment extends Fragment {
     private EditText email;
     private EditText password;
     private EditText username;
-    private EditText cpf;
+    private Button login;
 
     public CadastroFragment() {
         // Required empty public constructor
@@ -72,8 +75,8 @@ public class CadastroFragment extends Fragment {
         email = view.findViewById(R.id.email);
         password = view.findViewById(R.id.password);
         username = view.findViewById(R.id.username);
-        cpf = view.findViewById(R.id.cpf);
         direcionar = view.findViewById(R.id.direcionar);
+        login = view.findViewById(R.id.login);
 
         direcionar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +87,30 @@ public class CadastroFragment extends Fragment {
                         .commit();
             }
         });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String emailUsuario = email.getText().toString();
+                String nome = username.getText().toString();
+                String senha = password.getText().toString();
+                Usuario usuario = new Usuario("cliente", nome, emailUsuario, senha);
+                adicionarUsuario(usuario);
+
+                FirstFragment firstFragment = new FirstFragment();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, firstFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
         return view;
+
+    }
+
+    public void adicionarUsuario(Usuario usuario) {
+        Database db = new Database(getContext());
+        db.adicionarUsuario(usuario);
     }
 }

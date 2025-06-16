@@ -38,12 +38,25 @@
         android:id="@+id/envia_placa"
         android:layout_width="143dp"
         android:layout_height="53dp"
-        android:layout_marginTop="40dp"
-        android:text="Enviar"
+        android:layout_marginTop="32dp"
+        android:text="Entrada"
         android:textSize="18sp"
         app:cornerRadius="15sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <Button
+        android:id="@+id/remover"
+        android:layout_width="143dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="32dp"
+        android:text="Saída"
+        android:textSize="18sp"
+        app:cornerRadius="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/envia_placa"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
